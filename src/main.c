@@ -4,7 +4,7 @@
 #include <string.h>
 
 enum {HEART, DIAMOND, SPADE, CLUB} suit;
-	
+
 Window *main_window;
 static TextLayer *start_text_layer;
 static TextLayer *difficulty_text_layer;
@@ -110,14 +110,6 @@ void change_icon() {
 	}
 }
 
-void displayCard(suit mySuit, int value) {
-	
-}
-
-void clearCard() {
-	
-}
-
 void clearLayers() {
 	text_layer_set_text(start_text_layer, "");
 	text_layer_set_text(difficulty_text_layer, "");
@@ -187,8 +179,8 @@ int hit(struct player *myPlayer) {
 	player_score += cardDeck[myCard].value;
 	if (cardDeck[myCard].face == 14)
 		num_aces++;
-	
-	
+
+
 	// TODO: draw a randow card from deck
 	if (player_score > 21 && num_aces == 0) {
 		myPlayer->busted = true;
@@ -196,7 +188,7 @@ int hit(struct player *myPlayer) {
 		num_aces--;
 		player_score = player_score - 10;
 	}
-	
+
 	// changing values to new values
 	myPlayer->score = player_score;
 	myPlayer->numAces = num_aces;
@@ -218,15 +210,20 @@ bool shouldHit(struct player *myPlayer) {
 
 void displayCard (int card_number) {
 	if (cardDeck[card_number].suit == 1)
-		bitmap_layer_set_bitmap(card_suit_layer, card_suit_heart);	
+		bitmap_layer_set_bitmap(card_suit_layer, card_suit_heart);
 	else if (cardDeck[card_number].suit == 2)
-		bitmap_layer_set_bitmap(card_suit_layer, card_suit_diamond);	
+		bitmap_layer_set_bitmap(card_suit_layer, card_suit_diamond);
 	else if (cardDeck[card_number].suit == 3)
-		bitmap_layer_set_bitmap(card_suit_layer, card_suit_spade);	
+		bitmap_layer_set_bitmap(card_suit_layer, card_suit_spade);
 	else if (cardDeck[card_number].suit == 4)
 		bitmap_layer_set_bitmap(card_suit_layer, card_suit_club);
 	layer_set_hidden((Layer *)card_outline_layer, false);
 	layer_set_hidden((Layer *)card_suit_layer, false);
+}
+
+void clearCard() {
+	layer_set_hidden((Layer *)card_outline_layer, true);
+	layer_set_hidden((Layer *)card_suit_layer, true);
 }
 
 void btn_hit() {
@@ -263,35 +260,35 @@ static void window_load(Window *window) {
   text_layer_set_font(start_text_layer, fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD));
   text_layer_set_text_alignment(start_text_layer, GTextAlignmentCenter);
   layer_add_child(window_layer, text_layer_get_layer(start_text_layer));
-	
+
   difficulty_text_layer = text_layer_create(GRect(0, 25, 124, 168));
   text_layer_set_text_color(difficulty_text_layer, GColorBlack);
   text_layer_set_background_color(difficulty_text_layer, GColorClear);
   text_layer_set_font(difficulty_text_layer, fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD));
   text_layer_set_text_alignment(difficulty_text_layer, GTextAlignmentCenter);
   layer_add_child(window_layer, text_layer_get_layer(difficulty_text_layer));
-	
+
   instruction_text_layer = text_layer_create(GRect(0, 5, 124, 168));
   text_layer_set_text_color(instruction_text_layer, GColorBlack);
   text_layer_set_background_color(instruction_text_layer, GColorClear);
   text_layer_set_font(instruction_text_layer, fonts_get_system_font(FONT_KEY_GOTHIC_18));
   text_layer_set_text_alignment(instruction_text_layer, GTextAlignmentCenter);
   layer_add_child(window_layer, text_layer_get_layer(instruction_text_layer));
-	
+
   bet_text_layer = text_layer_create(GRect(0, 25, 124, 168));
   text_layer_set_text_color(bet_text_layer, GColorBlack);
   text_layer_set_background_color(bet_text_layer, GColorClear);
   text_layer_set_font(bet_text_layer, fonts_get_system_font(FONT_KEY_GOTHIC_18));
   text_layer_set_text_alignment(bet_text_layer, GTextAlignmentCenter);
   layer_add_child(window_layer, text_layer_get_layer(bet_text_layer));
-	
+
   game_text_layer = text_layer_create(GRect(0, 0, 144, 168));
   text_layer_set_text_color(game_text_layer, GColorBlack);
   text_layer_set_background_color(game_text_layer, GColorClear);
   text_layer_set_font(game_text_layer, fonts_get_system_font(FONT_KEY_GOTHIC_18));
   text_layer_set_text_alignment(game_text_layer, GTextAlignmentCenter);
   layer_add_child(window_layer, text_layer_get_layer(game_text_layer));
-	
+
   results_text_layer = text_layer_create(GRect(0, 0, 144, 168));
   text_layer_set_text_color(results_text_layer, GColorBlack);
   text_layer_set_background_color(results_text_layer, GColorClear);
@@ -310,13 +307,13 @@ static void window_load(Window *window) {
   bitmap_layer_set_bitmap(card_outline_layer, card_outline);
   bitmap_layer_set_alignment(card_outline_layer, GAlignCenter);
   layer_add_child(window_layer, bitmap_layer_get_layer(card_outline_layer));
-	
+
   card_suit_layer = bitmap_layer_create(GRect(43, 30, 81, 71));
   layer_set_hidden((Layer *)card_suit_layer, true);
   bitmap_layer_set_bitmap(card_suit_layer, card_suit_heart);
   bitmap_layer_set_alignment(card_suit_layer, GAlignCenter);
   layer_add_child(window_layer, bitmap_layer_get_layer(card_suit_layer));
-	
+
   card_value_layer = text_layer_create(GRect(43, 80, 81, 115));
   text_layer_set_text_color(card_value_layer, GColorBlack);
   text_layer_set_background_color(card_value_layer, GColorClear);
