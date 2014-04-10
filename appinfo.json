@@ -1,0 +1,85 @@
+{
+    "versionLabel": "1.0",
+    "uuid": "3e7cbd2c-1eaa-4713-aebb-ba2026a2ed46",
+    "appKeys": {},
+    "longName": "Blackjack",
+    "versionCode": 1,
+    "capabilities": [
+        ""
+    ],
+    "shortName": "Blackjack",
+    "companyName": "mr__jasper",
+    "watchapp": {
+        "watchface": false
+    },
+    "resources": {
+        "media": [
+            {
+                "menuIcon": true,
+                "type": "png",
+                "name": "MENU_ICON",
+                "file": "images/spade_icon.png"
+            },
+            {
+                "type": "png",
+                "name": "CARD_OUTLINE",
+                "file": "images/card_outline.png"
+            },
+            {
+                "type": "png",
+                "name": "SUIT_SPADE",
+                "file": "images/spade_sm.png"
+            },
+            {
+                "type": "png",
+                "name": "SUIT_HEART",
+                "file": "images/heart_sm.png"
+            },
+            {
+                "type": "png",
+                "name": "SUIT_DIAMOND",
+                "file": "images/diamond_sm.png"
+            },
+            {
+                "type": "png",
+                "name": "SUIT_CLUB",
+                "file": "images/club_sm.png"
+            },
+            {
+                "type": "png",
+                "name": "A_B_BLANK",
+                "file": "images/blank.png"
+            },
+            {
+                "type": "png",
+                "name": "A_B_S",
+                "file": "images/S.png"
+            },
+            {
+                "type": "png",
+                "name": "A_B_PLUS",
+                "file": "images/plus.png"
+            },
+            {
+                "type": "png",
+                "name": "A_B_MINUS",
+                "file": "images/minus.png"
+            },
+            {
+                "type": "png",
+                "name": "A_B_H",
+                "file": "images/H.png"
+            },
+            {
+                "type": "png",
+                "name": "A_B_D",
+                "file": "images/D.png"
+            },
+            {
+                "type": "png",
+                "name": "A_B_CHECK",
+                "file": "images/check_1.png"
+            }
+        ]
+    }
+}
